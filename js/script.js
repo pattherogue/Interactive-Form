@@ -20,3 +20,7 @@ function otherJobTextField() {
 }
 
 otherJobTextField();
+
+/* disable the "color" select element */
+const colorSelect = document.getElementById('color');
+colorSelect.disabled = true;
