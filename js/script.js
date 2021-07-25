@@ -6,4 +6,17 @@ nameField.focus();
 const otherJobRole = document.getElementById('other-job-role');
 otherJobRole.style.display = 'none';
 
-/* 
+
+/* display/hide "text field" based on user selection */
+function otherJobTextField() {
+    const jobTitle = document.getElementById('title');
+    jobTitle.addEventListener('change', (e) => {
+        if(e.target.value == 'other') {
+            otherJobRole.style.display = 'block';
+        } else {
+            otherJobRole.style.display = 'none';
+        }
+    });
+}
+
+otherJobTextField();
