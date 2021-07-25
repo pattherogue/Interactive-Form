@@ -24,3 +24,22 @@ otherJobTextField();
 /* disable the "color" select element */
 const colorSelect = document.getElementById('color');
 colorSelect.disabled = true;
+
+
+/* program "design" select element to listen for user changes */
+const shirtDesign = document.getElementById('design');
+const colorOptions = colorSelect.children;
+shirtDesign.addEventListener('change', (e) => {
+    for (let i = 0; colorOptions.length; i++) {
+        const themeOfChoice = e.target.value;
+        const dataTheme = coloroptions[i].getAttribute('data-theme');
+        /* color options for Theme - "JS Puns" */
+        /* color options fo rTheme - "I <3 JS" */
+        if (themeOfChoice === dataTheme) {
+            colorOptions[i].hidden = false;
+        } else {
+            colorOptions[i].hidden = true;
+            colorOptions[i].removeAttribute = ('selected', false);
+        }
+    }
+})
