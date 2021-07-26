@@ -1,12 +1,14 @@
+/* ***The "Name" Field*** */
 /* first text field focus state on page load */
 const nameField = document.getElementById('name');
 nameField.focus();
 
+/* *** "Job Role" section *** */
 /* hide "other-job-role" when form first loads */
 const otherJobRole = document.getElementById('other-job-role');
 otherJobRole.style.display = 'none';
 
-
+/* "T-Shirt Info" section */
 /* display/hide "text field" based on user selection */
 function otherJobTextField() {
     const jobTitle = document.getElementById('title');
@@ -24,8 +26,6 @@ otherJobTextField();
 /* disable the "color" select element */
 const colorSelect = document.getElementById('color');
 colorSelect.disabled = true;
-
-
 
 /* program "design" select element to listen for user changes */
 const shirtDesign = document.getElementById('design');
@@ -52,3 +52,20 @@ shirtDesign.addEventListener('change', (e) => {
         colorOption[4].selected = true;
     }
 });
+
+/* ***Register for Activities" Section*** */
+/* program fieldset element to listen for user changes */
+const registerForActivities = document.getElementById('activites');
+registerForActivities.addEventListener('change', (e) => {
+    let selectedActivityCost = e.target.getAttribute('data-cost');
+    selectedActivityCost = +selectedActivityCost;
+     /* if checked total cost chould increase by value in attribute of element */
+     if(e.target.checked) {
+         totalCost = totalCost + selectedActivityCost;
+     } else {
+         totalCost = totalCost - selectedActivityCost;
+     } 
+     totalDisplay.innerHTML = `$${totalCost}`;
+
+    /* update <p> element */
+})
