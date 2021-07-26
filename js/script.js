@@ -26,15 +26,18 @@ const colorSelect = document.getElementById('color');
 colorSelect.disabled = true;
 
 
+
 /* program "design" select element to listen for user changes */
 const shirtDesign = document.getElementById('design');
 const colorOptions = colorSelect.children;
 shirtDesign.addEventListener('change', (e) => {
+    /* enable the "color" select element */
+    colorSelect.disabled = false;
     for (let i = 0; colorOptions.length; i++) {
         const themeOfChoice = e.target.value;
-        const dataTheme = coloroptions[i].getAttribute('data-theme');
-        /* color options for Theme - "JS Puns" */
-        /* color options fo rTheme - "I <3 JS" */
+        const dataTheme = colorOptions[i].getAttribute('data-theme');
+        /* assign color options for Theme - "JS Puns" */
+        /* assign color options forTheme - "I <3 JS" */
         if (themeOfChoice === dataTheme) {
             colorOptions[i].hidden = false;
         } else {
@@ -42,4 +45,10 @@ shirtDesign.addEventListener('change', (e) => {
             colorOptions[i].removeAttribute = ('selected', false);
         }
     }
-})
+    /* disply proper color options of selected design */
+    if (shirtDesign.value == 'js puns') {
+        colorOption[1].selected = true;
+    } else if (shirtDesign.value == 'heart js') {
+        colorOption[4].selected = true;
+    }
+});
