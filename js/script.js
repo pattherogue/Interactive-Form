@@ -57,15 +57,35 @@ shirtDesign.addEventListener('change', (e) => {
 /* program fieldset element to listen for user changes */
 const registerForActivities = document.getElementById('activites');
 registerForActivities.addEventListener('change', (e) => {
+
     let selectedActivityCost = e.target.getAttribute('data-cost');
     selectedActivityCost = +selectedActivityCost;
+    let totalCost = 0;
      /* if checked total cost chould increase by value in attribute of element */
-     if(e.target.checked) {
-         totalCost = totalCost + selectedActivityCost;
+     if (e.target.checked) {
+         totalCost += selectedActivityCost;
      } else {
-         totalCost = totalCost - selectedActivityCost;
+         totalCost -= selectedActivityCost;
      } 
-     totalDisplay.innerHTML = `$${totalCost}`;
-
-    /* update <p> element */
-})
+    
+     /* update <p> element */
+     const displayTotal = document.getElementById('activites-cost');
+     displayTotal.innerHTML = `$${totalCost}`;
+     const checkBoxes = document.querySelectorAll('#activities input');
+     for (let i = 0; i < checkBoxes.length; i++ ) {
+        if (
+            e.target.getAttribute('date-day-and-time') === 
+            checkBoxes[i].getAttribute('day-date-and-time') && 
+            e.target !== checkBoxes[i]
+        ) {
+            if (e.target.checked) {
+                checkBoxes[i].disabled = true;
+                checkBoxes[i].parentElement.className = 'disabled';
+            } else {
+                checkBoxes[i].disabled = false;
+                checkBoxes[i].parentElement.className = '';
+            }
+        }
+     }
+ 
+});
