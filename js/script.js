@@ -59,6 +59,8 @@ const registerForActivities = document.getElementById('activities')
 let totalCost = 0;
 let boxesChecked = 0;
 
+const checkBoxOptions = document.querySelectorAll('#activities input');
+
 registerForActivities.addEventListener('change', (e) => {
     
     let selectedActivityCost = e.target.getAttribute('data-cost');
@@ -76,7 +78,23 @@ registerForActivities.addEventListener('change', (e) => {
      /* update <p> element */
      let displayTotal = document.getElementById('activities-cost');
      displayTotal.innerHTML = `Total: $${totalCost}`;
+    
+     /* when user selects activity, loop over all activities */
+    for (let i = 0; i < checkBoxOptions.length; i++)
+     /* check if same day and time */
+    if (
+        e.target.getAttribute('data-day-and-time') === 
+            checkBoxOptions[i].getAttribute('data-day-and-time') && 
+        e.target !== checkBoxOptions[i]
+    ) {
+         /* disable/enable accordingly */
+        if (e.target.checked) {
+            checkBoxOptions[i].disabled = true;
+            checkBoxOptions[i].parentElement.className = 'disabled';
+        } else {
+            checkBoxOptions[i].disabled = false;
+            checkBoxOptions[i].parentElement.className =  '';
+        }
+    }
 });
 
-/* if activity checked */
-/* total cost increase by "data-cost" attribute of activity's "checkbox" element */
