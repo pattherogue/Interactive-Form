@@ -55,37 +55,28 @@ shirtDesign.addEventListener('change', (e) => {
 
 /* ***Register for Activities" Section*** */
 /* program fieldset element to listen for user changes */
-const registerForActivities = document.getElementById('activites');
-registerForActivities.addEventListener('change', (e) => {
+const registerForActivities = document.getElementById('activities')
+let totalCost = 0;
+let boxesChecked = 0;
 
+registerForActivities.addEventListener('change', (e) => {
+    
     let selectedActivityCost = e.target.getAttribute('data-cost');
     selectedActivityCost = +selectedActivityCost;
-    let totalCost = 0;
+
      /* if checked total cost chould increase by value in attribute of element */
-     if (e.target.checked) {
+     if (e.target.checked === true) {
          totalCost += selectedActivityCost;
+         boxesChecked++;
      } else {
          totalCost -= selectedActivityCost;
-     } 
+         boxesChecked--;
+    } 
     
      /* update <p> element */
-     const displayTotal = document.getElementById('activites-cost');
-     displayTotal.innerHTML = `$${totalCost}`;
-     const checkBoxes = document.querySelectorAll('#activities input');
-     for (let i = 0; i < checkBoxes.length; i++ ) {
-        if (
-            e.target.getAttribute('date-day-and-time') === 
-            checkBoxes[i].getAttribute('day-date-and-time') && 
-            e.target !== checkBoxes[i]
-        ) {
-            if (e.target.checked) {
-                checkBoxes[i].disabled = true;
-                checkBoxes[i].parentElement.className = 'disabled';
-            } else {
-                checkBoxes[i].disabled = false;
-                checkBoxes[i].parentElement.className = '';
-            }
-        }
-     }
- 
+     let displayTotal = document.getElementById('activities-cost');
+     displayTotal.innerHTML = `Total: $${totalCost}`;
 });
+
+/* if activity checked */
+/* total cost increase by "data-cost" attribute of activity's "checkbox" element */
