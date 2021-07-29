@@ -110,26 +110,48 @@ const creditCardNumber = document.getElementById('cc-num');
 const zipCode = document.getElementById('zip');
 const cvvCode = document.getElementById('cvv');
 
-/* credit card payment option selected for user by default *
+/* credit card payment option selected for user by default */
+paymentSelection.children[1].setAttribute("selected", true);
+payPal.style.display = 'none';
+bitCoin.style.display = 'none';
+
 /* update form display chosen payment method section */
 
 /*  listen for changes */
 paymentSelection.addEventListener('change', () => {
     /* hide all payment sections in form's UI except selected */
     if (paymentSelection.value === 'paypal') {
-        payPal.hidden = false;
-        creditCard.hidden = true;
-        bitCoin.hidden = true;
+        payPal.style.display = 'block'
+        creditCard.style.display = 'none';
+        bitCoin.style.display = 'none';
     } else if (paymentSelection.value === 'credit-card') {
-        payPal.hidden = true;
-        creditCard.hidden = false;
-        bitCoin.hidden = true; 
+        payPal.style.display = 'none';
+        creditCard.style.display = 'block';
+        bitCoin.style.display = 'none'; 
     } else {
-        payPal.hidden = true;
-        creditCard.hidden = true;
-        bitCoin.hidden = false;
+        payPal.style.display = 'none';
+        creditCard.style.display = 'none';
+        bitCoin.style.display = 'block'; 
     }
 });
+
+/* *** Form Validation *** */
+
+/* program form element to listen for submit event */
+
+/* "Name" field cannot be blank or empty
+
+/* "Email Address" field must be valid format */
+
+/* "Register for Activities" section must have at least on activity selected */
+
+/* if and only if credit card is selected pament method */
+
+/* "Card number" field must contain 13 - 16 digit w/o dashes or spaces */
+
+/* "Zip code" field must contain a 5 digit number */ 
+
+/* "CVV" field must contain a 3 digit number */ 
 
 
 
