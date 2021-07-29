@@ -112,10 +112,10 @@ const cvvCode = document.getElementById('cvv');
 
 /* credit card payment option selected for user by default */
 paymentSelection.children[1].setAttribute("selected", true);
-payPal.style.display = 'none';
-bitCoin.style.display = 'none';
 
 /* update form display chosen payment method section */
+payPal.style.display = 'none';
+bitCoin.style.display = 'none';
 
 /*  listen for changes */
 paymentSelection.addEventListener('change', () => {
@@ -136,10 +136,16 @@ paymentSelection.addEventListener('change', () => {
 });
 
 /* *** Form Validation *** */
-
+const inputName = document.getElementById('name');
+const inputEmail = document.getElementById('email');
 /* program form element to listen for submit event */
 
-/* "Name" field cannot be blank or empty
+/* "Name" field cannot be blank or empty */
+const validateName = () => {
+    const enteredName = inputName.value;
+    const nameValidated =  /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/gm.test(enteredName);
+    return nameValidated;
+}
 
 /* "Email Address" field must be valid format */
 
