@@ -110,8 +110,12 @@ const creditCardNumber = document.getElementById('cc-num');
 const zipCode = document.getElementById('zip');
 const cvvCode = document.getElementById('cvv');
 
-/* credit card payment option selected for user by defauly */
+/* credit card payment option selected for user by default *
+/* update form display chosen payment method section */
+
+/*  listen for changes */
 paymentSelection.addEventListener('change', () => {
+    /* hide all payment sections in form's UI except selected */
     if (paymentSelection.value === 'paypal') {
         payPal.hidden = false;
         creditCard.hidden = true;
@@ -126,8 +130,6 @@ paymentSelection.addEventListener('change', () => {
         bitCoin.hidden = false;
     }
 });
-/* update form display chosen payment method section */
 
-/* prgram "I'm going to pay with" select element to listen for changes */
 
-/* hide all payment sections in form's UI except selected */
+
