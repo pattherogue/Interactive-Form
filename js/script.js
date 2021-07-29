@@ -53,7 +53,7 @@ shirtDesign.addEventListener('change', (e) => {
     }
 });
 
-/* ***Register for Activities" Section*** */
+/* ***"Register for Activities" Section*** */
 /* program fieldset element to listen for user changes */
 const registerForActivities = document.getElementById('activities')
 let totalCost = 0;
@@ -98,3 +98,36 @@ registerForActivities.addEventListener('change', (e) => {
     }
 });
 
+/* ***Payment Info Section*** */
+const paymentSelection = document.getElementById('payment');
+const paymentOption = paymentSelection.children;
+
+const creditCard = document.getElementById('credit-card');
+const payPal = document.getElementById('paypal');
+const bitCoin = document.getElementById('bitcoin');
+
+const creditCardNumber = document.getElementById('cc-num');
+const zipCode = document.getElementById('zip');
+const cvvCode = document.getElementById('cvv');
+
+/* credit card payment option selected for user by defauly */
+paymentSelection.addEventListener('change', () => {
+    if (paymentSelection.value === 'paypal') {
+        payPal.hidden = false;
+        creditCard.hidden = true;
+        bitCoin.hidden = true;
+    } else if (paymentSelection.value === 'credit-card') {
+        payPal.hidden = true;
+        creditCard.hidden = false;
+        bitCoin.hidden = true; 
+    } else {
+        payPal.hidden = true;
+        creditCard.hidden = true;
+        bitCoin.hidden = false;
+    }
+});
+/* update form display chosen payment method section */
+
+/* prgram "I'm going to pay with" select element to listen for changes */
+
+/* hide all payment sections in form's UI except selected */
