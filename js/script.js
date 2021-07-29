@@ -136,11 +136,13 @@ paymentSelection.addEventListener('change', () => {
 });
 
 /* *** Form Validation *** */
-const inputName = document.getElementById('name');
-const inputEmail = document.getElementById('email');
+
 /* program form element to listen for submit event */
 
 /* "Name" field cannot be blank or empty */
+const inputName = document.getElementById('name');
+const inputEmail = document.getElementById('email');
+
 const validateName = () => {
     const enteredName = inputName.value;
     const nameValidated =  /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/gm.test(enteredName);
