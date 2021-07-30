@@ -164,15 +164,25 @@ const validateActivities = () => {
 };
 
 /* if and only if credit card is selected pament method */
-
 /* "Card number" field must contain 13 - 16 digit w/o dashes or spaces */
 const validateCreditCard = () => {
     const creditCardValidated = /^(\d{13,16})$/.test(creditCardNumber.value);
     return creditCardValidated;
 };
-/* "Zip code" field must contain a 5 digit number */ 
 
-/* "CVV" field must contain a 3 digit number */ 
+/* "Zip code" field must contain a 5 digit number */ 
+const validateZipCode = () => {
+    const zipCodeValidated = /^(\d{5})$/.test(zipCode.value);
+    return zipCodeValidated;
+};
+
+/* "CVV" field must contain a 3 digit number */
+const validateCVVCode = () => {
+    const cVVCodeValidated = /^(\d{3})$/.test(cvvCode.value);
+    return cVVCodeValidated;
+}; 
+
+/* ***Accessibility*** */
 
 
 
