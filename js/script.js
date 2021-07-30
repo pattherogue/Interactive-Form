@@ -155,19 +155,21 @@ const validateEmail = () => {
     /* username, "@" symbol, ".com" domain name */
     const emailValidated = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(enteredEmail.value);
     return emailValidated;
-}
+};
 
 /* "Register for Activities" section must have at least on activity selected */
 const validateActivities = () => {
     const activitiesValidated = totalCost > 0;
     return activitiesValidated;
-}
-
+};
 
 /* if and only if credit card is selected pament method */
 
 /* "Card number" field must contain 13 - 16 digit w/o dashes or spaces */
-
+const validateCreditCard = () => {
+    const creditCardValidated = /^(\d{13,16})$/.test(creditCardNumber.value);
+    return creditCardValidated;
+};
 /* "Zip code" field must contain a 5 digit number */ 
 
 /* "CVV" field must contain a 3 digit number */ 
