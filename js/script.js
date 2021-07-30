@@ -150,8 +150,6 @@ const validateName = () => {
     return nameValidated;
 };
 /* "Email Address" field must be valid format */
-const inputEmail = document.getElementById('email');
-
 const validateEmail = () => {
     const enteredEmail = inputEmail.value;
     /* username, "@" symbol, ".com" domain name */
@@ -160,6 +158,11 @@ const validateEmail = () => {
 }
 
 /* "Register for Activities" section must have at least on activity selected */
+const validateActivities = () => {
+    const activitiesValidated = totalCost > 0;
+    return activitiesValidated;
+}
+
 
 /* if and only if credit card is selected pament method */
 
