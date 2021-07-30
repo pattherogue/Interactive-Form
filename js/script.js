@@ -145,11 +145,19 @@ const inputEmail = document.getElementById('email');
 
 const validateName = () => {
     const enteredName = inputName.value;
+    /* cannot be blank or empty */
     const nameValidated =  /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/gm.test(enteredName);
     return nameValidated;
-}
-
+};
 /* "Email Address" field must be valid format */
+const inputEmail = document.getElementById('email');
+
+const validateEmail = () => {
+    const enteredEmail = inputEmail.value;
+    /* username, "@" symbol, ".com" domain name */
+    const emailValidated = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(enteredEmail.value);
+    return emailValidated;
+}
 
 /* "Register for Activities" section must have at least on activity selected */
 
