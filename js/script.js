@@ -183,7 +183,7 @@ const validateCVVCode = () => {
 }; 
 
 /* ***Accessibility*** */
-/* make focus state obvious to user */
+/* make focus state obvious to all users */
 /* program "checkbox input" to listen for "focus" and "blur" */
 for (let i=0; i < checkBoxOptions.length; i++ ) {
     /* when "focus" is detected, add "focus" className to parent element */
@@ -196,3 +196,28 @@ for (let i=0; i < checkBoxOptions.length; i++ ) {
     });
 };
 
+/* make the form validation errors obvious to all users */
+/* if required form field or section is invalid when submitting */
+/* add ".not-valid" className to parent element */
+/* remove ".valid" className from parent element */
+/* display ".hint" element associated with form field or section */
+
+/* if required form field or section is valid */
+/* add ".valid" className to parent element */
+/* remove ".not-valid" className from parent element */
+/* hide ".hint" element associeted with element */
+
+function validationErrors(functionName, e, requiredField, classUpdate) {
+    /* if required form field or section is invalid when submitting */
+    if(!functionName) {
+        e.preventDefault();
+        /* add ".not-valid" className to parent element */
+        requiredField.parentElement.className = 'not-valid';
+        requiredField.parentElement.lastElementChild.className = classUpdate;
+        /* if required form field or section is valid */
+    } else {
+        /* add ".valid" className to parent element */
+        requiredField.parentElement.className = 'valid';
+        requiredField.parentElement.lastElementChild.className = `${classUpdate} hint`;
+    }
+};
