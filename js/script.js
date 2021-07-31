@@ -194,16 +194,35 @@ for (let i=0; i < checkBoxOptions.length; i++ ) {
     checkBoxOptions[i].addEventListener('blur', (e) => {
         checkBoxOptions[i].parentElement.classList.remove('focus');
     });
-};
+}
 
 /* make the form validation errors obvious to all users */
-/* if required form field or section is invalid when submitting */
-/* add ".not-valid" className to parent element */
+/* when user submits form */ 
+document.querySelector('form').addEventListener('submit', (e) => {
+    validationErrors(validateName(), e, registrantName, 'name-hint');
+    if(!validateEmail()) {
+        e.preventDefault();
+    /* alert - blank field */
+        if (inputEmail.value === '') {
+            inputEmail.parentElement.className = 'not-valid';
+            inputEmail.parentElement.lastElementChild.className = 'email-hint';
+            inputEmail.parentElement.lastElementChild.innerHTML = 'Cannot be blank.';
+        } else {
+            inputEmail.parentElement.className = 'not-valid';
+            inputEmail.parentElement.lastElementChild.className = 'email-hint';
+            inputEmail.parentElement.lastElementChild.innerHTML = 'Must be formatted correctly.';
+        } else {
+            inputEmail.parentElement.className = 'valid';
+            inputEmail.parentElement.lastElementChild.className = 'email hint hint';
+        }
+    }
+})
+
 /* remove ".valid" className from parent element */
 /* display ".hint" element associated with form field or section */
 
-/* if required form field or section is valid */
-/* add ".valid" className to parent element */
+
+
 /* remove ".not-valid" className from parent element */
 /* hide ".hint" element associeted with element */
 
