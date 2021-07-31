@@ -183,6 +183,16 @@ const validateCVVCode = () => {
 }; 
 
 /* ***Accessibility*** */
-
-
+/* make focus state obvious to user */
+/* program "checkbox input" to listen for "focus" and "blur" */
+for (let i=0; i < checkBoxOptions.length; i++ ) {
+    /* when "focus" is detected, add "focus" className to parent element */
+    checkBoxOptions[i].addEventListener("focus", (e) => {
+        checkBoxOptions[i].parentElement.classList.add('focus');
+    });
+    /* when "blur" is detected, remove "focus" className from element that possesses it */
+    checkBoxOptions[i].addEventListener('blur', (e) => {
+        checkBoxOptions[i].parentElement.classList.remove('focus');
+    });
+};
 
