@@ -200,23 +200,25 @@ for (let i=0; i < checkBoxOptions.length; i++ ) {
 /* when user submits form */ 
 document.querySelector('form').addEventListener('submit', (e) => {
     validationErrors(validateName(), e, registrantName, 'name-hint');
+    /* if required form field is invalid */
     if(!validateEmail()) {
         e.preventDefault();
         /* alert - blank field */
         if (inputEmail.value === '') {
                 inputEmail.parentElement.className = 'not-valid';
                 inputEmail.parentElement.lastElementChild.className = 'email-hint';
-                inputEmail.parentElement.lastElementChild.innerHTML = 'Cannot be blank.';
+                inputEmail.parentElement.lastElementChild.innerHTML = 'Input field cannot be blank.';
             /* alert - format incorrect */
             } else {
                 inputEmail.parentElement.className = 'not-valid';
                 inputEmail.parentElement.lastElementChild.className = 'email-hint';
-                inputEmail.parentElement.lastElementChild.innerHTML = 'Must be formatted correctly.';
+                inputEmail.parentElement.lastElementChild.innerHTML = 'Email address must be formatted correctly.';
             } 
         } else {
             inputEmail.parentElement.className = 'valid';
             inputEmail.parentElement.lastElementChild.className = 'email hint hint';
         }
+        /* if required form field is invalid */
         if(!validateActivities()) {
             e.preventDefault();
             registerForActivities.className = 'activities not-valid';
