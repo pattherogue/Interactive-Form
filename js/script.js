@@ -202,21 +202,36 @@ document.querySelector('form').addEventListener('submit', (e) => {
     validationErrors(validateName(), e, registrantName, 'name-hint');
     if(!validateEmail()) {
         e.preventDefault();
-    /* alert - blank field */
+        /* alert - blank field */
         if (inputEmail.value === '') {
-            inputEmail.parentElement.className = 'not-valid';
-            inputEmail.parentElement.lastElementChild.className = 'email-hint';
-            inputEmail.parentElement.lastElementChild.innerHTML = 'Cannot be blank.';
-        } else {
-            inputEmail.parentElement.className = 'not-valid';
-            inputEmail.parentElement.lastElementChild.className = 'email-hint';
-            inputEmail.parentElement.lastElementChild.innerHTML = 'Must be formatted correctly.';
+                inputEmail.parentElement.className = 'not-valid';
+                inputEmail.parentElement.lastElementChild.className = 'email-hint';
+                inputEmail.parentElement.lastElementChild.innerHTML = 'Cannot be blank.';
+            /* alert - format incorrect */
+            } else {
+                inputEmail.parentElement.className = 'not-valid';
+                inputEmail.parentElement.lastElementChild.className = 'email-hint';
+                inputEmail.parentElement.lastElementChild.innerHTML = 'Must be formatted correctly.';
+            } 
         } else {
             inputEmail.parentElement.className = 'valid';
             inputEmail.parentElement.lastElementChild.className = 'email hint hint';
         }
-    }
-})
+        if(!validateActivities()) {
+            e.preventDefault();
+            registerForActivities.className = 'activities not-valid';
+            registerForActivities.lastElementChild.className = 'activities-hint';
+        } else {
+            registerForActivities.className = 'activities valid';
+            registerForActivities.lastElementChild.className = 'activities hint hint';
+        }
+
+        if(paymentSelection.value === 'credit-card') {
+            validationErrors(validateCreditCard(), e, creditCardNumber, "cc-hint");
+            validationErrors(validateZipCode(), e, zipCode, "zip-hint" );
+            validationErrors(validateCVVCode(), e, cvvCode, "cvv-hint");
+        }
+});
 
 /* remove ".valid" className from parent element */
 /* display ".hint" element associated with form field or section */
