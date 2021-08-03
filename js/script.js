@@ -221,6 +221,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
     /* if required form field is invalid */
     if(!validateEmail()) {
         e.preventDefault();
+        /* Conditional Error Message */
         /* alert - blank field */
         if (inputEmail.value === '') {
                 inputEmail.parentElement.className = 'not-valid';
@@ -278,4 +279,3 @@ function validationErrors(functionName, e, requiredField, classUpdate) {
 
 
 
-/* Conditional Error Message */
