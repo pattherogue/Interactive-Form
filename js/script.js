@@ -78,7 +78,27 @@ registerForActivities.addEventListener('change', (e) => {
      /* update <p> element */
      let displayTotal = document.getElementById('activities-cost');
      displayTotal.innerHTML = `Total: $${totalCost}`;
-    
+
+     
+    /* Prevent users from registering for conflicting activities
+    /* when user selects activity, loop over all activities */
+    for (let i = 0; i < checkBoxOptions.length; i++)
+     /* check if same day and time */
+    if (
+        e.target.getAttribute('data-day-and-time') === 
+            checkBoxOptions[i].getAttribute('data-day-and-time') && 
+        e.target !== checkBoxOptions[i]
+    ) {
+         /* disable/enable accordingly */
+        if (e.target.checked) {
+            checkBoxOptions[i].disabled = true;
+            checkBoxOptions[i].parentElement.className = 'disabled';
+        } else {
+            checkBoxOptions[i].disabled = false;
+            checkBoxOptions[i].parentElement.className =  '';
+        }
+    }
+});
  
 
 /* ***Payment Info Section*** */
@@ -94,7 +114,7 @@ const zipCode = document.getElementById('zip');
 const cvvCode = document.getElementById('cvv');
 
 /* credit card payment option selected for user by default */
-paymentSelection.children[1].setAttribute("selected", true);
+paymentOption[1].setAttribute('selected', true);
 
 /* update form display chosen payment method section */
 payPal.style.display = 'none';
@@ -117,6 +137,8 @@ paymentSelection.addEventListener('change', () => {
         bitCoin.style.display = 'block'; 
     }
 });
+
+
 
 /* *** Form Validation *** */
 
@@ -163,6 +185,9 @@ const validateCVVCode = () => {
     const cVVCodeValidated = /^(\d{3})$/.test(cvvCode.value);
     return cVVCodeValidated;
 }; 
+
+
+
 
 /* ***Accessibility*** */
 /* make focus state obvious to all users */
@@ -240,25 +265,6 @@ function validationErrors(functionName, e, requiredField, classUpdate) {
     }
 };
 
-/* Prevent users from registering for conflicting activities
-    /* when user selects activity, loop over all activities */
-    for (let i = 0; i < checkBoxOptions.length; i++)
-     /* check if same day and time */
-    if (
-        e.target.getAttribute('data-day-and-time') === 
-            checkBoxOptions[i].getAttribute('data-day-and-time') && 
-        e.target !== checkBoxOptions[i]
-    ) {
-         /* disable/enable accordingly */
-        if (e.target.checked) {
-            checkBoxOptions[i].disabled = true;
-            checkBoxOptions[i].parentElement.className = 'disabled';
-        } else {
-            checkBoxOptions[i].disabled = false;
-            checkBoxOptions[i].parentElement.className =  '';
-        }
-    }
-});
 
 /* Real-time error message */
 
