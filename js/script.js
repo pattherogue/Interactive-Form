@@ -1,7 +1,7 @@
 /* ***The "Name" Field*** */
 /* first text field focus state on page load */
-const nameField = document.getElementById('name');
-nameField.focus();
+const inputName = document.getElementById('name');
+inputName.focus();
 
 /* *** "Job Role" section *** */
 /* hide "other-job-role" when form first loads */
@@ -140,7 +140,6 @@ paymentSelection.addEventListener('change', () => {
 /* program form element to listen for submit event */
 
 /* "Name" field cannot be blank or empty */
-const inputName = document.getElementById('name');
 const inputEmail = document.getElementById('email');
 
 const validateName = () => {
