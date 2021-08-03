@@ -198,7 +198,7 @@ for (let i=0; i < checkBoxOptions.length; i++ ) {
 /* make the form validation errors obvious to all users */
 /* when user submits form */ 
 document.querySelector('form').addEventListener('submit', (e) => {
-    validationErrors(validateName(), e, registrantName, 'name-hint');
+    validationErrors(validateName(), e, inputName, 'name-hint');
     /* if required form field is invalid */
     if(!validateEmail()) {
         e.preventDefault();
