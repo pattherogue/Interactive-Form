@@ -79,24 +79,7 @@ registerForActivities.addEventListener('change', (e) => {
      let displayTotal = document.getElementById('activities-cost');
      displayTotal.innerHTML = `Total: $${totalCost}`;
     
-     /* when user selects activity, loop over all activities */
-    for (let i = 0; i < checkBoxOptions.length; i++)
-     /* check if same day and time */
-    if (
-        e.target.getAttribute('data-day-and-time') === 
-            checkBoxOptions[i].getAttribute('data-day-and-time') && 
-        e.target !== checkBoxOptions[i]
-    ) {
-         /* disable/enable accordingly */
-        if (e.target.checked) {
-            checkBoxOptions[i].disabled = true;
-            checkBoxOptions[i].parentElement.className = 'disabled';
-        } else {
-            checkBoxOptions[i].disabled = false;
-            checkBoxOptions[i].parentElement.className =  '';
-        }
-    }
-});
+ 
 
 /* ***Payment Info Section*** */
 const paymentSelection = document.getElementById('payment');
@@ -256,3 +239,27 @@ function validationErrors(functionName, e, requiredField, classUpdate) {
         requiredField.parentElement.lastElementChild.className = `${classUpdate} hint`;
     }
 };
+
+/* Prevent users from registering for conflicting activities
+    /* when user selects activity, loop over all activities */
+    for (let i = 0; i < checkBoxOptions.length; i++)
+     /* check if same day and time */
+    if (
+        e.target.getAttribute('data-day-and-time') === 
+            checkBoxOptions[i].getAttribute('data-day-and-time') && 
+        e.target !== checkBoxOptions[i]
+    ) {
+         /* disable/enable accordingly */
+        if (e.target.checked) {
+            checkBoxOptions[i].disabled = true;
+            checkBoxOptions[i].parentElement.className = 'disabled';
+        } else {
+            checkBoxOptions[i].disabled = false;
+            checkBoxOptions[i].parentElement.className =  '';
+        }
+    }
+});
+
+/* Real-time error message */
+
+/* Conditional Error Message */
