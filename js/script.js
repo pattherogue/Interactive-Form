@@ -79,7 +79,7 @@ registerForActivities.addEventListener('change', (e) => {
      let displayTotal = document.getElementById('activities-cost');
      displayTotal.innerHTML = `Total: $${totalCost}`;
 
-     
+
     /* Prevent users from registering for conflicting activities
     /* when user selects activity, loop over all activities */
     for (let i = 0; i < checkBoxOptions.length; i++)
@@ -186,8 +186,19 @@ const validateCVVCode = () => {
     return cVVCodeValidated;
 }; 
 
+/* Real-time error message */
+/* program one required field to listen for user interaction */
+creditCardNumber.addEventListener('keyup', (e) => {
+    validationErrors(validateCreditCard(), e, creditCardNumber, 'cc-hint');
+});
 
+zipCode.addEventListener('keyup', (e) => {
+    validationErrors(validateZipCode(), e, zipCode, 'zip-hint');
+});
 
+cvvCode.addEventListener('keyup', (e) => {
+    validationErrors(validateCVVCode(), e, cvvCode, 'cvv-hint');
+});
 
 /* ***Accessibility*** */
 /* make focus state obvious to all users */
@@ -266,6 +277,5 @@ function validationErrors(functionName, e, requiredField, classUpdate) {
 };
 
 
-/* Real-time error message */
 
 /* Conditional Error Message */
